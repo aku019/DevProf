@@ -58,7 +58,7 @@ const devSchema = new Schema({
         
     },
     repos: [{
-        linkedin_id: {
+        name: {
             type: String,
             
         },

@@ -81,7 +81,8 @@ router.post('/', async(req, res) => {
     }
     const repos=[];
     Object.keys(user2).forEach(id =>{
-        //if(user[id]!== "undefined")
+        console.log(user2[id].name);
+        if(user2[id]!== "undefined")
         repos.push({name:user2[id].name,html_url:user2[id].html_url,description:user2[id].description,updated_at:user2[id].updated_at}); //.user.avatar_url
     })
     const dev =  new DEV({id,avatar_url,name,company,blog,location,email,bio,github_id,linkedin_id,codechef_id,hackerrank_id,twitter_id,medium_id,repos});
@@ -91,6 +92,7 @@ router.post('/', async(req, res) => {
                // console.log("woohoo");
              //  const x= await dev.save();
              const x=  dev.save();
+
                res.status(201).send({id});
             }
             catch{
