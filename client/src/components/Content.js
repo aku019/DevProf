@@ -22,7 +22,7 @@ const Content = ( {children, onAddDeveloper}) => {
    },[onAddDeveloper, searchDevProfile])
 
    const onSearchDeveloperProfile = async () =>{
-       const res = getDevelopers(`/api/developers/${searchDevProfile}`);
+       const res = getDevelopers(`/api/developers/search/${searchDevProfile}`);
        setSearchDevProfile(res.data);
        console.log(searchDevProfile);
    }

@@ -142,6 +142,59 @@ router.get('/:id', (req, res) => {
     });
 });
 
+
+
+router.get('/search/:id', (req, res) => {
+    // Object.keys(devRepos).forEach((element) => {
+    //     /* console.log(`github id ${element.github_id}    request param ${req.params.id}`); */
+    //     if (element.github_id === req.params.id) {
+    //         /* console.log('Hi there'); */
+    //         res.status(200).send((element));
+    //     }
+    // });
+
+    // res.status(404).send('User does not exist');
+
+    const {id}  = req.params;
+    const {id2}  = req.params.id;
+    //const long_url = urls[req.params.id];
+    console.log(id);
+     console.log(id2);
+    var found=0;
+    DEV.findOne( {id:id} ).then(dev => {
+        console.log(dev);
+        if (dev !=null) {
+            found=1;
+            console.log(dev);
+            const developer = [
+                {
+                    id:dev.id,
+                    avatar_url:dev.avatar_url,
+                }
+            ];
+            res.status(200).json(developer);
+           return;
+               
+        }
+        else
+        res.status(500).send('User does not exist');
+
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* DELETE /api/developers/:id */
 
 router.delete('/:id', (req, res) => {
